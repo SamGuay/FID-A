@@ -608,6 +608,88 @@ fprintf(fid,'\n\n<p> </p>');
 fprintf(fid,'\n\n<h2>Final Result:</h2>');
 fprintf(fid,'\n<img src= " %s " width="800" height="400">',fullfile(reportFigsDir,'finalSpecFig.jpg'));
 fclose(fid);
+
+
+%write a markdown report: 
+fid=fopen(fullfile(reportDir,'HOF_SubId_timeID.md'),'w+');
+fprintf(fid,'\n\n');
+fprintf(fid,'{{< columns >}}');
+fprintf(fid,'\n\n');
+fprintf(fid,'[![FID-A](/images/fida.jpg)](https://github.com/CIC-methods/FID-A)');
+fprintf(fid,'\n\n');
+fprintf(fid,'<--->');
+fprintf(fid,'\n\n');
+fprintf(fid,'<br> <br> <br>');
+fprintf(fid,'\n\n');
+fprintf(fid,'### [Processing Report](https://github.com/CIC-methods/FID-A)');
+fprintf(fid,'\n\n');
+fprintf(fid,'{{< /columns >}}');
+fprintf(fid,'\n\n');
+fprintf(fid,'## Voxel in XXXXX');
+fprintf(fid,'\n\n');
+fprintf(fid,'#### **Processing pipeline applied to SPECIAL data using `run_specialproc_auto.m`**');
+fprintf(fid,'\n\n');
+fprintf(fid,'**File Name**: `%s/%s/%s`',fullfile(filestring,filename));
+fprintf(fid,'\n\n');
+fprintf(fid,'**Processing date**: %s',date);
+fprintf(fid,'\n\n');
+fprintf(fid,'<hr>');
+fprintf(fid,'\n\n');
+fprintf(fid,'## Results of multi-coil combination:');
+fprintf(fid,'\n\n');
+fprintf(fid,'![Before and After Multi-Coil Combination](%s)',fullfile(reportFigsDir,'coilReconFig.jpg'));
+fprintf(fid,'\n\n');
+fprintf(fid,'<hr>');
+fprintf(fid,'\n\n');
+fprintf(fid,'## Results of alignment of SPECIAL sub-spectra:');
+fprintf(fid,'\n\n');
+fprintf(fid,'![Alignment of SPECIAL Sub-Spectra](%s)',fullfile(reportFigsDir,'alignSubSpecs_prePostFig.jpg'));
+fprintf(fid,'\n\n');
+fprintf(fid,'## Results of removal of bad averages:');
+fprintf(fid,'\n\n');
+fprintf(fid,'Original number of averages: **%5.6f**',out_raw.sz(out_raw.dims.averages));
+fprintf(fid,'\n\n');
+fprintf(fid,'Number of bad Averages removed: **%5.6f**',nBadAvgTotal);
+fprintf(fid,'\n\n');
+fprintf(fid,'Number of remaining averages in processed dataset: \t%5.6f',out_rm.sz(out_rm.dims.averages));
+fprintf(fid,'\n\n');
+fprintf(fid,'Bad Averages Removal Threshold was: **%2.2f**',nsd);
+fprintf(fid,'\n\n');
+fprintf(fid,'![Before and After Removal of Bad Averages](%s)',fullfile(reportFigsDir,'rmBadAvg_prePostFig.jpg'));
+fprintf(fid,'\n\n');
+fprintf(fid,'![Deviation Metric](%s)',fullfile(reportFigsDir,'rmBadAvg_scatterFig.jpg'));
+fprintf(fid,'\n\n');
+fprintf(fid,'<hr>');
+fprintf(fid,'\n\n');
+fprintf(fid,'## Results of spectral registration:');
+fprintf(fid,'\n\n');
+fprintf(fid,'Total frequency drift was: **%5.6f**',max(totalFreqDrift));
+fprintf(fid,'\n\n');
+fprintf(fid,'Total phase drift was: **%5.6f**',max(totalPhaseDrift));
+fprintf(fid,'\n\n');
+fprintf(fid,'![Before and After Drift Correction](%s)',fullfile(reportFigsDir,'alignAvgs_prePostFig.jpg'));
+fprintf(fid,'\n\n');
+fprintf(fid,'{{< columns >}}');
+fprintf(fid,'\n\n');
+fprintf(fid,'![Frequency Drift](%s)', fullfile(reportFigsDir,'freqDriftFig.jpg'));
+fprintf(fid,'\n\n');
+fprintf(fid,'<--->'); 
+fprintf(fid,'\n\n');
+fprintf(fid,'![Phase Drift](%s)', fullfile(reportFigsDir,'phaseDriftFig.jpg'));
+fprintf(fid,'\n\n');
+fprintf(fid,'{{< /columns >}}');
+fprintf(fid,'\n\n');
+fprintf(fid,'<hr>');
+fprintf(fid,'\n\n');
+fprintf(fid,'## Final Result:');
+fprintf(fid,'\n\n');
+fprintf(fid,'![Final Spectrum](%s)',fullfile(reportFigsDir,'finalSpecFig.jpg'));
+fprintf(fid,'\n\n');
+fprintf(fid,'<hr>');
+fprintf(fid,'\n\n');
+fprintf(fid,'\n\n');
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
